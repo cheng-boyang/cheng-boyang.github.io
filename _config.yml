@@ -1,13 +1,1 @@
-title: 我的个人网站
-description: 用 GitHub Pages 搭建的个人站点
-# 如果你用的是 username.github.io 主页，url 可以先留空或改成你的域名
-# url: https://yourname.github.io
-theme: jekyll-theme-cayman
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-
-author:
-  name: 你的名字
-  email: you@example.com
-  github: your-github-username
+title: Boyang Cheng's Page
