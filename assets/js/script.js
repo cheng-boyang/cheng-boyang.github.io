@@ -1,19 +1,19 @@
 'use strict';
 
-/* 小工具 */
+
 const hasEl = (el) => !!el;
 const toggleActive = (el) => el.classList.toggle('active');
 
-/* 等 DOM 准备好再绑事件，避免早绑定找不到元素 */
+
 document.addEventListener('DOMContentLoaded', () => {
-  /* ========== Sidebar（可选） ========== */
+  /* ========== Sidebar ========== */
   const sidebar = document.querySelector('[data-sidebar]');
   const sidebarBtn = document.querySelector('[data-sidebar-btn]');
   if (hasEl(sidebar) && hasEl(sidebarBtn)) {
     sidebarBtn.addEventListener('click', () => toggleActive(sidebar));
   }
 
-  /* ========== Testimonials Modal（可选） ========== */
+  /* ========== Testimonials Modal ========== */
   const testimonialsItem = document.querySelectorAll('[data-testimonials-item]');
   const modalContainer = document.querySelector('[data-modal-container]');
   const modalCloseBtn = document.querySelector('[data-modal-close-btn]');
@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.addEventListener('click', toggleModal);
   }
 
-  /* ========== Custom Select & 过滤（可选） ========== */
+  /* ========== Custom Select  ========== */
   const select = document.querySelector('[data-select]');
   const selectItems = document.querySelectorAll('[data-select-item]');
-  const selectValue = document.querySelector('[data-select-value]'); // ← 修正拼写
+  const selectValue = document.querySelector('[data-select-value]');
   const filterBtn = document.querySelectorAll('[data-filter-btn]');
   const filterItems = document.querySelectorAll('[data-filter-item]');
 
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ========== 表单（可选） ========== */
+  /* ========== form ========== */
   const form = document.querySelector('[data-form]');
   const formInputs = document.querySelectorAll('[data-form-input]');
   const formBtn = document.querySelector('[data-form-btn]');
@@ -105,25 +105,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ========== 关键：页面导航（修复版） ========== */
+  /* ========== nav ========== */
   const navigationLinks = document.querySelectorAll('[data-nav-link]');
   const pages = document.querySelectorAll('[data-page]');
 
   function showPage(targetName) {
     const target = (targetName || '').trim().toLowerCase();
-    // 切 nav 高亮
+    // nav highlight
     for (let i = 0; i < navigationLinks.length; i++) {
       const link = navigationLinks[i];
       const name = link.textContent.trim().toLowerCase();
       if (name === target) link.classList.add('active');
       else link.classList.remove('active');
     }
-    // 切页面
+    // page
     for (let j = 0; j < pages.length; j++) {
       const page = pages[j];
       page.classList.toggle('active', page.dataset.page === target);
     }
-    // 若没匹配到任何 page，默认 about
+    // empty page，default about
     const anyActive = Array.from(pages).some(p => p.classList.contains('active'));
     if (!anyActive && pages.length) {
       for (let j = 0; j < pages.length; j++) pages[j].classList.remove('active');
@@ -141,15 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (navigationLinks.length && pages.length) {
-    // 绑定点击
+    // 
     for (let i = 0; i < navigationLinks.length; i++) {
       navigationLinks[i].addEventListener('click', function () {
         const target = this.textContent.trim().toLowerCase();
-        history.replaceState(null, '', '#' + target); // 更新哈希
+        history.replaceState(null, '', '#' + target); // refresh hash
         showPage(target);
       });
     }
-    // 根据 URL 哈希初始化
+    // 
     const initial = (location.hash || '#about').slice(1);
     showPage(initial);
   }
