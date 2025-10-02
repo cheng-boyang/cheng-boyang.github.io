@@ -756,6 +756,17 @@ main {
 
 .chips-item img:hover { filter: grayscale(0); }
 
+.chips-list::-webkit-scrollbar {
+  height: 5px; 
+}
+.chips-list::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
+.chips-list::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
 
 
 
