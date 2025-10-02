@@ -58,7 +58,7 @@ overlay.addEventListener("click", testimonialsModalFunc);
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 select.addEventListener("click", function () { elementToggleFunc(this); });
@@ -141,11 +141,9 @@ for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
     const targetPage = this.textContent.trim().toLowerCase();
 
-    // 切换 nav 高亮
     navigationLinks.forEach(link => link.classList.remove("active"));
     this.classList.add("active");
 
-    // 切换页面显示
     pages.forEach(page => {
       page.classList.toggle("active", page.dataset.page === targetPage);
     });
