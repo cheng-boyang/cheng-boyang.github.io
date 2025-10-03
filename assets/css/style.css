@@ -728,49 +728,6 @@ main {
 
 .chips { margin-bottom: 15px; }
 
-/* ===== Chips：统一高度 + 不裁剪，覆盖原有规则 ===== */
-.chips-list {
-  display: flex;
-  align-items: center;          /* 垂直方向居中项 */
-  gap: 15px;
-  padding: 20px;
-  overflow-x: auto;             /* 保持横向滚动 */
-  scroll-snap-type: inline mandatory;
-}
-
-/* 统一每个 chip 的高度，宽度随图片比例变化 */
-.chips-list .chips-item {
-  /* 覆盖原文件里的 min-width 限制 */
-  min-width: unset !important;
-  height: 200px;                /* 统一高度：可改 160/180/220 等 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;          /* 可选：圆角 */
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 25px;
-}
-
-/* 图片按比例缩放，完整显示，不裁剪 */
-.chips-list .chips-item img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;          /* 完整显示（不裁剪、不变形） */
-  display: block;
-}
-
-/* 覆盖响应式断点里对 .chips-item 的 min-width 设置 */
-@media (min-width: 450px) {
-  .chips-list .chips-item { min-width: unset !important; }
-}
-
-
-/* 
 .chips-list {
   display: flex;
   justify-content: flex-start;
@@ -787,21 +744,17 @@ main {
 }
 
 .chips-item {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  min-width: 50%;
+  scroll-snap-align: start;
 }
 
 .chips-item img {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  filter: grayscale(0.2);
-} */
+  width: 100%;
+  /* filter: grayscale(1); */
+  transition: var(--transition-1);
+}
+
+.chips-item img:hover { filter: grayscale(0); }
 
 .chips-item img:hover { filter: grayscale(0); }
 
