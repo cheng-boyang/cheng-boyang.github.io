@@ -744,7 +744,7 @@ main {
 }
 
 .chips-item {
-  min-width: 50%;
+  /* min-width: 50%; */
   height: 300px;
   display: flex;
   justify-content: center;
@@ -755,7 +755,7 @@ main {
 .chips-item img {
   /* width: 100%; */
   width: auto;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   transition: var(--transition-1);
   filter: grayscale(0.2);
