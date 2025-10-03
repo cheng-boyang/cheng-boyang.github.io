@@ -756,8 +756,6 @@ main {
 
 .chips-item img:hover { filter: grayscale(0); }
 
-.chips-item img:hover { filter: grayscale(0); }
-
 .chips-list::-webkit-scrollbar {
   height: 5px; 
 }
