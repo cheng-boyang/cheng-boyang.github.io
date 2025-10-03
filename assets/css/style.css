@@ -747,9 +747,11 @@ main {
   justify-content: center;
   align-items: center;
   border-radius: 12px;          /* 可选：圆角 */
-  overflow: hidden;             /* 防止布局被异常大图撑坏（不裁剪图片内容，见下） */
-  scroll-snap-align: start;
-  background: transparent;      /* 可按需加背景色 */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 25px;
 }
 
 /* 图片按比例缩放，完整显示，不裁剪 */
