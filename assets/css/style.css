@@ -746,6 +746,7 @@ main {
 .chips-item {
   /* min-width: 50%; */
   height: 200px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -754,10 +755,10 @@ main {
 
 .chips-item img {
   /* width: 100%; */
-  width: auto;
   height: 100%;
+  width: auto;
   object-fit: cover;
-  transition: var(--transition-1);
+  display: block;
   filter: grayscale(0.2);
 }
 
