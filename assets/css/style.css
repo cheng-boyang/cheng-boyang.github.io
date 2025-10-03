@@ -746,14 +746,19 @@ main {
 .chips-item {
   min-width: 50%;
   height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   scroll-snap-align: start;
 }
 
 .chips-item img {
   /* width: 100%; */
+  width: auto;
   height: 100%;
   object-fit: cover;
   transition: var(--transition-1);
+  filter: grayscale(0.2);
 }
 
 .chips-item img:hover { filter: grayscale(0); }
