@@ -164,20 +164,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = modal.querySelector('[data-chip-overlay]');
   const btnClose = modal.querySelector('[data-chip-close]');
 
-  // 统一给所有 chip 图片绑定点击
   const chipImgs = document.querySelectorAll('.chips-list img');
   chipImgs.forEach(img => {
-    // 若 img 包在 <a href="#"> 里，阻止默认跳转
     img.closest('a')?.addEventListener('click', e => e.preventDefault());
 
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => {
-      modal.classList.add('active');  // 触发现有 modal 的显示样式:contentReference[oaicite:5]{index=5}
+      modal.classList.add('active');
       modalImg.src = img.src;
       modalImg.alt = img.alt || 'chip enlarged preview';
-      // 键盘可达性：打开后把焦点给关闭按钮
       btnClose?.focus({ preventScroll: true });
-      // 防止背景滚动（可选）
+
       document.documentElement.style.overflow = 'hidden';
     });
   });
@@ -185,14 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     modal.classList.remove('active');
     modalImg.removeAttribute('src');
-    // 恢复滚动（可选）
+
     document.documentElement.style.overflow = '';
   }
 
   overlay?.addEventListener('click', closeModal);
   btnClose?.addEventListener('click', closeModal);
 
-  // Esc 关闭
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       closeModal();
