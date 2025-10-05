@@ -154,3 +154,45 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage(initial);
   }
 });
+
+// === Chip Gallery Lightbox ===
+(function () {
+  const modal = document.getElementById('chip-modal');
+  if (!modal) return;
+
+  const modalImg = document.getElementById('chip-modal-img');
+  const overlay = modal.querySelector('[data-chip-overlay]');
+  const btnClose = modal.querySelector('[data-chip-close]');
+
+  const chipImgs = document.querySelectorAll('.chips-list img');
+  chipImgs.forEach(img => {
+    img.closest('a')?.addEventListener('click', e => e.preventDefault());
+
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      modal.classList.add('active');
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || 'chip enlarged preview';
+      btnClose?.focus({ preventScroll: true });
+
+      document.documentElement.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modalImg.removeAttribute('src');
+
+    document.documentElement.style.overflow = '';
+  }
+
+  overlay?.addEventListener('click', closeModal);
+  btnClose?.addEventListener('click', closeModal);
+
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
