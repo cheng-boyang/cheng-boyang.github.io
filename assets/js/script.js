@@ -108,6 +108,112 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ========== nav ========== */
   const navigationLinks = document.querySelectorAll('[data-nav-link]');
   const pages = document.querySelectorAll('[data-page]');
+  const publicationsList = document.querySelector('[data-publications-list]');
+  const publicationsLoading = document.querySelector('[data-publications-loading]');
+  const publicationsEmpty = document.querySelector('[data-publications-empty]');
+  const publicationsUpdated = document.querySelector('[data-publications-updated]');
+
+  function formatSyncDate(value) {
+    if (!value) return 'Synced from Google Scholar.';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return 'Synced from Google Scholar.';
+    return `Last synced from Google Scholar on ${date.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })} at ${date.toLocaleTimeString(undefined, {
+      hour: 'numeric',
+      minute: '2-digit'
+    })}.`;
+  }
+
+  async function loadPublications() {
+    if (!hasEl(publicationsList) || !hasEl(publicationsLoading) || !hasEl(publicationsEmpty) || !hasEl(publicationsUpdated)) {
+      return;
+    }
+
+    try {
+      const response = await fetch('./assets/data/publications.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const payload = await response.json();
+      const publications = Array.isArray(payload.publications) ? payload.publications : [];
+
+      publicationsUpdated.textContent = formatSyncDate(payload.updated_at);
+      publicationsLoading.hidden = true;
+      publicationsList.innerHTML = '';
+
+      if (!publications.length) {
+        publicationsEmpty.hidden = false;
+        return;
+      }
+
+      publicationsEmpty.hidden = true;
+
+      publications.forEach((publication) => {
+        const item = document.createElement('li');
+        item.className = 'publication-item';
+
+        const card = document.createElement('article');
+        card.className = 'publication-card';
+
+        const title = document.createElement('h3');
+        title.className = 'publication-title';
+
+        const titleLink = document.createElement('a');
+        titleLink.href = publication.scholar_url || payload.source_url || '#';
+        titleLink.target = '_blank';
+        titleLink.rel = 'noopener noreferrer';
+        titleLink.textContent = publication.title || 'Untitled publication';
+        title.appendChild(titleLink);
+
+        const meta = document.createElement('p');
+        meta.className = 'publication-authors';
+        meta.textContent = publication.authors || '';
+
+        const venue = document.createElement('p');
+        venue.className = 'publication-venue';
+
+        const venueBits = [];
+        if (publication.venue) venueBits.push(publication.venue);
+        if (publication.year) venueBits.push(String(publication.year));
+        venue.textContent = venueBits.join(' • ');
+
+        const footer = document.createElement('div');
+        footer.className = 'publication-footer';
+
+        const citationPill = document.createElement('span');
+        citationPill.className = 'publication-citations';
+        const citationCount = Number.isFinite(Number(publication.citations))
+          ? Number(publication.citations)
+          : 0;
+        citationPill.textContent = citationCount === 1 ? '1 citation' : `${citationCount} citations`;
+
+        footer.appendChild(citationPill);
+
+        if (publication.scholar_url) {
+          const scholarLink = document.createElement('a');
+          scholarLink.className = 'publication-link';
+          scholarLink.href = publication.scholar_url;
+          scholarLink.target = '_blank';
+          scholarLink.rel = 'noopener noreferrer';
+          scholarLink.textContent = 'View on Scholar';
+          footer.appendChild(scholarLink);
+        }
+
+        card.appendChild(title);
+        if (meta.textContent) card.appendChild(meta);
+        if (venue.textContent) card.appendChild(venue);
+        card.appendChild(footer);
+        item.appendChild(card);
+        publicationsList.appendChild(item);
+      });
+    } catch (error) {
+      publicationsLoading.hidden = true;
+      publicationsEmpty.hidden = false;
+      publicationsUpdated.textContent = 'Unable to load publications right now.';
+    }
+  }
 
   function showPage(targetName) {
     const target = (targetName || '').trim().toLowerCase();
@@ -153,6 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const initial = (location.hash || '#about').slice(1);
     showPage(initial);
   }
+
+  loadPublications();
 });
 
 // === Chip Gallery Lightbox ===

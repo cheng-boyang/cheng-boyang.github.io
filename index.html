@@ -16,6 +16,75 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    #chip-modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      z-index: 30;
+    }
+
+    #chip-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    #chip-modal [data-chip-overlay] {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+    }
+
+    .chip-modal-content {
+      position: relative;
+      z-index: 1;
+      width: min(92vw, 1000px);
+      max-height: 88vh;
+      padding: 18px;
+      border: 1px solid hsl(0, 0%, 22%);
+      border-radius: 18px;
+      background: hsl(240, 2%, 12%);
+      box-shadow: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+    }
+
+    #chip-modal-img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      max-height: calc(88vh - 36px);
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      background: hsl(240, 2%, 9%);
+    }
+
+    .chip-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .chips-item img {
+      cursor: zoom-in;
+    }
+  </style>
 
   <!--
     - google font link
@@ -138,9 +207,9 @@
             <button class="navbar-link" data-nav-link>Resume</button>
           </li>
 
-          <!-- <li class="navbar-item">
+          <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Publications</button>
-          </li> -->
+          </li>
 
         </ul>
 
@@ -456,6 +525,14 @@
 
         </section>
 
+        <div id="chip-modal" aria-hidden="true">
+          <div data-chip-overlay></div>
+          <div class="chip-modal-content" role="dialog" aria-modal="true" aria-label="Large chip photo preview">
+            <button class="chip-modal-close" type="button" aria-label="Close large photo" data-chip-close>&times;</button>
+            <img id="chip-modal-img" src="" alt="Large chip photo">
+          </div>
+        </div>
+
       </article>
 
 
@@ -663,237 +740,34 @@
 
 
       <!--
-        - #PORTFOLIO
+        - #PUBLICATIONS
       -->
 
-      <article class="portfolio" data-page="publications">
+      <article class="publications" data-page="publications">
 
         <header>
           <h2 class="h2 article-title">Publications</h2>
         </header>
 
-        <section class="projects">
+        <section class="publications-intro">
+          <p class="publication-summary">
+            This page syncs with my Google Scholar profile and refreshes the publication list automatically.
+          </p>
 
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
-            </ul>
-
+          <div class="publications-actions">
+            <a class="form-btn" href="https://scholar.google.com/citations?user=QHEX6EcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+              <ion-icon name="school-outline"></ion-icon>
+              <span>Open Google Scholar</span>
+            </a>
           </div>
 
-          <ul class="project-list">
+          <p class="publication-sync-meta" data-publications-updated>Loading latest sync information...</p>
+        </section>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Finance</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Orizon</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-          </ul>
-
+        <section class="publications-list-section">
+          <div class="publication-loading" data-publications-loading>Loading publications...</div>
+          <div class="publication-empty" data-publications-empty hidden>No publications are available yet.</div>
+          <ol class="publications-list" data-publications-list></ol>
         </section>
 
       </article>

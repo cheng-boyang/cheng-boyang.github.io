@@ -1,0 +1,33 @@
+name: Sync Publications
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 14 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-google-scholar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync Google Scholar publications
+        run: python3 scripts/sync_google_scholar.py
+
+      - name: Commit publication updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/publications.json
+          git diff --cached --quiet || git commit -m "Sync Google Scholar publications"
+          git push
