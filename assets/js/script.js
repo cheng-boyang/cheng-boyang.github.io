@@ -112,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const publicationsLoading = document.querySelector('[data-publications-loading]');
   const publicationsEmpty = document.querySelector('[data-publications-empty]');
   const publicationsUpdated = document.querySelector('[data-publications-updated]');
+  const publicationsProfileName = document.querySelector('[data-publications-profile-name]');
+  const publicationsSummary = document.querySelector('[data-publications-summary]');
+  const publicationsSourceLink = document.querySelector('[data-publications-source-link]');
 
   function formatSyncDate(value) {
     if (!value) return 'Synced from Google Scholar.';
@@ -129,6 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderPublications(payload) {
     const publications = Array.isArray(payload.publications) ? payload.publications : [];
+
+    if (hasEl(publicationsProfileName)) {
+      publicationsProfileName.textContent = payload.profile_name || 'Publications';
+    }
+
+    if (hasEl(publicationsSummary)) {
+      const total = publications.length;
+      publicationsSummary.textContent = total === 1 ? '1 publication' : `${total} publications`;
+    }
+
+    if (hasEl(publicationsSourceLink) && payload.source_url) {
+      publicationsSourceLink.href = payload.source_url;
+    }
 
     publicationsUpdated.textContent = formatSyncDate(payload.updated_at);
     publicationsLoading.hidden = true;
@@ -219,6 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       publicationsLoading.hidden = true;
       publicationsEmpty.hidden = false;
+      if (hasEl(publicationsProfileName)) publicationsProfileName.textContent = 'Publications';
+      if (hasEl(publicationsSummary)) publicationsSummary.textContent = 'Unable to load publication summary right now.';
       publicationsUpdated.textContent = 'Unable to load publications right now.';
     }
   }
