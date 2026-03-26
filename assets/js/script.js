@@ -130,6 +130,19 @@ document.addEventListener('DOMContentLoaded', () => {
     })}.`;
   }
 
+  function formatVenueAndYear(publication) {
+    const rawVenue = (publication.venue || '').trim();
+    const rawYear = publication.year ? String(publication.year) : '';
+
+    if (!rawVenue) return rawYear;
+    if (!rawYear) return rawVenue;
+
+    const trailingYearPattern = new RegExp(`(?:,\\s*|\\s+)${rawYear}$`);
+    if (trailingYearPattern.test(rawVenue)) return rawVenue;
+
+    return `${rawVenue} • ${rawYear}`;
+  }
+
   function renderPublications(payload) {
     const publications = Array.isArray(payload.publications) ? payload.publications : [];
 
@@ -184,10 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const venue = document.createElement('p');
       venue.className = 'publication-venue';
 
-      const venueBits = [];
-      if (publication.venue) venueBits.push(publication.venue);
-      if (publication.year) venueBits.push(String(publication.year));
-      venue.textContent = venueBits.join(' • ');
+      venue.textContent = formatVenueAndYear(publication);
 
       const citationPill = document.createElement('span');
       citationPill.className = 'publication-citations';
