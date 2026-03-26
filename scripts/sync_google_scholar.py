@@ -139,6 +139,11 @@ def main() -> None:
         default="assets/data/publications.json",
         help="Output JSON path",
     )
+    parser.add_argument(
+        "--js-output",
+        default="assets/js/publications-data.js",
+        help="Output JS path",
+    )
     parser.add_argument("--pagesize", type=int, default=DEFAULT_PAGESIZE)
     args = parser.parse_args()
 
@@ -147,6 +152,14 @@ def main() -> None:
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=True) + "\n")
+
+    js_output_path = Path(args.js_output)
+    js_output_path.parent.mkdir(parents=True, exist_ok=True)
+    js_output_path.write_text(
+        "window.PUBLICATIONS_DATA = "
+        + json.dumps(payload, indent=2, ensure_ascii=True)
+        + ";\n"
+    )
 
 
 if __name__ == "__main__":

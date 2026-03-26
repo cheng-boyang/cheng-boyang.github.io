@@ -1,4 +1,4 @@
-{
+window.PUBLICATIONS_DATA = {
   "profile_id": "QHEX6EcAAAAJ",
   "profile_name": "Boyang Cheng",
   "source_url": "https://scholar.google.com/citations?user=QHEX6EcAAAAJ&hl=en",
@@ -141,4 +141,4 @@
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=QHEX6EcAAAAJ:qjMakFHDy7sC"
     }
   ]
-}
+};
