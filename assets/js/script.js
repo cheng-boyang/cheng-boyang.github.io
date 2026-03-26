@@ -312,9 +312,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalImg = document.getElementById('chip-modal-img');
   const overlay = modal.querySelector('[data-chip-overlay]');
   const btnClose = modal.querySelector('[data-chip-close]');
+  const btnPrev = modal.querySelector('[data-chip-prev]');
+  const btnNext = modal.querySelector('[data-chip-next]');
 
-  const chipImgs = document.querySelectorAll('.chips-list img');
-  chipImgs.forEach(img => {
+  const chipImgs = Array.from(document.querySelectorAll('.chips-list img'));
+  let currentIndex = 0;
+
+  function showImageAt(index) {
+    if (!chipImgs.length) return;
+    const total = chipImgs.length;
+    currentIndex = (index + total) % total;
+    const img = chipImgs[currentIndex];
+    modalImg.src = img.src;
+    modalImg.alt = img.alt || 'chip enlarged preview';
+  }
+
+  function openModalAt(index) {
+    showImageAt(index);
+    modal.classList.add('active');
+    if (btnClose) {
+      btnClose.focus({ preventScroll: true });
+    }
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  chipImgs.forEach((img, index) => {
     const anchor = img.closest('a');
     if (anchor) {
       anchor.addEventListener('click', (e) => e.preventDefault());
@@ -322,14 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => {
-      modal.classList.add('active');
-      modalImg.src = img.src;
-      modalImg.alt = img.alt || 'chip enlarged preview';
-      if (btnClose) {
-        btnClose.focus({ preventScroll: true });
-      }
-
-      document.documentElement.style.overflow = 'hidden';
+      openModalAt(index);
     });
   });
 
@@ -346,11 +361,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnClose) {
     btnClose.addEventListener('click', closeModal);
   }
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => showImageAt(currentIndex - 1));
+  }
+  if (btnNext) {
+    btnNext.addEventListener('click', () => showImageAt(currentIndex + 1));
+  }
 
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (!modal.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+      return;
+    }
+    if (e.key === 'ArrowLeft') {
+      showImageAt(currentIndex - 1);
+      return;
+    }
+    if (e.key === 'ArrowRight') {
+      showImageAt(currentIndex + 1);
     }
   });
 })();

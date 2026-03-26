@@ -81,6 +81,29 @@
       z-index: 2;
     }
 
+    .chip-modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 66px;
+      height: 66px;
+      border-radius: 12px;
+      background: rgba(220, 220, 220, 0.35);
+      color: #fff;
+      font-size: 48px;
+      line-height: 1;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .chip-modal-nav-prev {
+      left: 10px;
+    }
+
+    .chip-modal-nav-next {
+      right: 10px;
+    }
+
     .chips-item img {
       cursor: zoom-in;
     }
@@ -529,6 +552,8 @@
         <div id="chip-modal" aria-hidden="true">
           <div data-chip-overlay></div>
           <div class="chip-modal-content" role="dialog" aria-modal="true" aria-label="Large chip photo preview">
+            <button class="chip-modal-nav chip-modal-nav-prev" type="button" aria-label="Previous die photo" data-chip-prev>&lsaquo;</button>
+            <button class="chip-modal-nav chip-modal-nav-next" type="button" aria-label="Next die photo" data-chip-next>&rsaquo;</button>
             <button class="chip-modal-close" type="button" aria-label="Close large photo" data-chip-close>&times;</button>
             <img id="chip-modal-img" src="" alt="Large chip photo">
           </div>
