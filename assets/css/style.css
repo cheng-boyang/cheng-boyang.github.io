@@ -938,7 +938,7 @@ main {
 }
 
 .education-item {
-  padding-right: clamp(92px, 23vw, 140px);
+  padding-right: clamp(74px, 18vw, 108px);
 }
 
 .education-logo {
@@ -946,16 +946,16 @@ main {
   top: 0;
   right: 0;
   display: block;
-  width: clamp(56px, 12vw, 84px);
+  width: clamp(42px, 8vw, 62px);
   height: auto;
-  max-height: clamp(56px, 12vw, 84px);
+  max-height: clamp(42px, 8vw, 62px);
   object-fit: contain;
   opacity: 0.96;
 }
 
 .education-logo-seu {
-  width: clamp(60px, 13vw, 92px);
-  top: 2px;
+  width: clamp(48px, 9vw, 68px);
+  top: 1px;
 }
 
 
