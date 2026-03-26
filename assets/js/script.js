@@ -164,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'publication-card';
 
+      const header = document.createElement('div');
+      header.className = 'publication-header';
+
       const title = document.createElement('h3');
       title.className = 'publication-title';
 
@@ -186,9 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (publication.year) venueBits.push(String(publication.year));
       venue.textContent = venueBits.join(' • ');
 
-      const footer = document.createElement('div');
-      footer.className = 'publication-footer';
-
       const citationPill = document.createElement('span');
       citationPill.className = 'publication-citations';
       const citationCount = Number.isFinite(Number(publication.citations))
@@ -196,22 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
         : 0;
       citationPill.textContent = citationCount === 1 ? '1 citation' : `${citationCount} citations`;
 
-      footer.appendChild(citationPill);
-
-      if (publication.scholar_url) {
-        const scholarLink = document.createElement('a');
-        scholarLink.className = 'publication-link';
-        scholarLink.href = publication.scholar_url;
-        scholarLink.target = '_blank';
-        scholarLink.rel = 'noopener noreferrer';
-        scholarLink.textContent = 'View on Scholar';
-        footer.appendChild(scholarLink);
-      }
-
-      card.appendChild(title);
+      header.appendChild(title);
+      header.appendChild(citationPill);
+      card.appendChild(header);
       if (meta.textContent) card.appendChild(meta);
       if (venue.textContent) card.appendChild(venue);
-      card.appendChild(footer);
       item.appendChild(card);
       publicationsList.appendChild(item);
     });
