@@ -937,6 +937,27 @@ main {
   line-height: 1.6;
 }
 
+.education-item {
+  padding-right: 140px;
+}
+
+.education-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 84px;
+  height: auto;
+  max-height: 84px;
+  object-fit: contain;
+  opacity: 0.96;
+}
+
+.education-logo-seu {
+  width: 84px;
+  top: 2px;
+}
+
 
 /*-----------------------------------*\
   #PUBLICATIONS
