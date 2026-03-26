@@ -30,6 +30,11 @@ GRAY_RE = re.compile(r'<div class="gs_gray">(.*?)</div>', re.S)
 CITATION_RE = re.compile(r'class="gsc_a_ac(?:\s+gs_ibl)?"[^>]*>(.*?)<', re.S)
 YEAR_RE = re.compile(r'<td class="gsc_a_y">.*?>(\d{4})<', re.S)
 PROFILE_TITLE_RE = re.compile(r"<title>(.*?)</title>", re.S)
+DETAIL_FIELD_RE = re.compile(
+    r'<div class="gsc_oci_field">(.*?)</div>\s*<div class="gsc_oci_value">(.*?)</div>',
+    re.S,
+)
+YEAR_IN_TEXT_RE = re.compile(r"\b(19|20)\d{2}\b")
 
 
 def fetch_html(url: str) -> str:
@@ -41,6 +46,75 @@ def fetch_html(url: str) -> str:
 def strip_tags(value: str) -> str:
     cleaned = re.sub(r"<[^>]+>", "", unescape(value)).replace("\xa0", " ").strip()
     return cleaned.replace("\u202a", "").replace("\u202c", "").strip()
+
+
+def remove_ellipsis(value: str) -> str:
+    if not value:
+        return value
+    return value.replace("...", "").replace("\u2026", "").strip(" ,")
+
+
+def parse_detail_fields(html: str) -> dict:
+    details = {}
+    for raw_key, raw_value in DETAIL_FIELD_RE.findall(html):
+        key = strip_tags(raw_key)
+        value = remove_ellipsis(strip_tags(raw_value))
+        if key and value:
+            details[key] = value
+    return details
+
+
+def extract_year_from_text(value: str) -> int | None:
+    if not value:
+        return None
+    match = YEAR_IN_TEXT_RE.search(value)
+    if not match:
+        return None
+    return int(match.group(0))
+
+
+def resolve_venue(details: dict, fallback: str) -> str:
+    patent_office = details.get("Patent office", "").strip()
+    patent_number = details.get("Patent number", "").strip()
+    if patent_number:
+        if patent_office:
+            return remove_ellipsis(f"Patent {patent_number} ({patent_office})")
+        return remove_ellipsis(f"Patent {patent_number}")
+
+    for key in (
+        "Journal",
+        "Conference",
+        "Book",
+        "Source",
+        "Publisher",
+    ):
+        value = details.get(key, "").strip()
+        if value:
+            return remove_ellipsis(value)
+    if patent_office:
+        return remove_ellipsis(f"Patent ({patent_office})")
+    return remove_ellipsis(fallback)
+
+
+def enrich_publication(publication: dict) -> dict:
+    try:
+        detail_html = fetch_html(publication["scholar_url"])
+        details = parse_detail_fields(detail_html)
+    except Exception:
+        # Keep list-page data when detail page fetch fails.
+        publication["authors"] = remove_ellipsis(publication.get("authors", ""))
+        publication["venue"] = remove_ellipsis(publication.get("venue", ""))
+        return publication
+
+    authors = details.get("Authors", publication.get("authors", ""))
+    venue = resolve_venue(details, publication.get("venue", ""))
+    detail_year = extract_year_from_text(details.get("Publication date", ""))
+
+    publication["authors"] = remove_ellipsis(authors)
+    publication["venue"] = remove_ellipsis(venue)
+    if detail_year is not None:
+        publication["year"] = detail_year
+    return publication
 
 
 def parse_publications(html: str) -> List[dict]:
@@ -62,15 +136,15 @@ def parse_publications(html: str) -> List[dict]:
         publications.append(
             {
                 "title": strip_tags(title_match.group("title")),
-                "authors": gray_parts[0] if len(gray_parts) > 0 else "",
-                "venue": gray_parts[1] if len(gray_parts) > 1 else "",
+                "authors": remove_ellipsis(gray_parts[0]) if len(gray_parts) > 0 else "",
+                "venue": remove_ellipsis(gray_parts[1]) if len(gray_parts) > 1 else "",
                 "year": year,
                 "citations": citations,
                 "scholar_url": urljoin(SCHOLAR_BASE_URL, unescape(title_match.group("href"))),
             }
         )
 
-    return publications
+    return [enrich_publication(publication) for publication in publications]
 
 
 def fetch_all_publications(user_id: str, pagesize: int) -> List[dict]:

@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderPublications(payload) {
+    if (!hasEl(publicationsList)) return;
     const publications = Array.isArray(payload.publications) ? payload.publications : [];
 
     if (hasEl(publicationsProfileName)) {
@@ -159,16 +160,25 @@ document.addEventListener('DOMContentLoaded', () => {
       publicationsSourceLink.href = payload.source_url;
     }
 
-    publicationsUpdated.textContent = formatSyncDate(payload.updated_at);
-    publicationsLoading.hidden = true;
-    publicationsList.innerHTML = '';
+    if (hasEl(publicationsUpdated)) {
+      publicationsUpdated.textContent = formatSyncDate(payload.updated_at);
+    }
+    if (hasEl(publicationsLoading)) {
+      publicationsLoading.hidden = true;
+    }
 
     if (!publications.length) {
-      publicationsEmpty.hidden = false;
+      // Keep server-rendered fallback entries if they already exist.
+      if (hasEl(publicationsEmpty) && publicationsList.children.length === 0) {
+        publicationsEmpty.hidden = false;
+      }
       return;
     }
 
-    publicationsEmpty.hidden = true;
+    if (hasEl(publicationsEmpty)) {
+      publicationsEmpty.hidden = true;
+    }
+    publicationsList.innerHTML = '';
 
     publications.forEach((publication) => {
       const item = document.createElement('li');
@@ -232,11 +242,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       renderPublications(await response.json());
     } catch (error) {
-      publicationsLoading.hidden = true;
-      publicationsEmpty.hidden = false;
+      if (hasEl(publicationsLoading)) {
+        publicationsLoading.hidden = true;
+      }
+      if (hasEl(publicationsEmpty) && publicationsList.children.length === 0) {
+        publicationsEmpty.hidden = false;
+      }
       if (hasEl(publicationsProfileName)) publicationsProfileName.textContent = 'Publications';
       if (hasEl(publicationsSummary)) publicationsSummary.textContent = 'Unable to load publication summary right now.';
-      publicationsUpdated.textContent = 'Unable to load publications right now.';
+      if (hasEl(publicationsUpdated)) {
+        publicationsUpdated.textContent = 'Unable to load publications right now.';
+      }
     }
   }
 
@@ -299,14 +315,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const chipImgs = document.querySelectorAll('.chips-list img');
   chipImgs.forEach(img => {
-    img.closest('a')?.addEventListener('click', e => e.preventDefault());
+    const anchor = img.closest('a');
+    if (anchor) {
+      anchor.addEventListener('click', (e) => e.preventDefault());
+    }
 
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => {
       modal.classList.add('active');
       modalImg.src = img.src;
       modalImg.alt = img.alt || 'chip enlarged preview';
-      btnClose?.focus({ preventScroll: true });
+      if (btnClose) {
+        btnClose.focus({ preventScroll: true });
+      }
 
       document.documentElement.style.overflow = 'hidden';
     });
@@ -319,8 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.overflow = '';
   }
 
-  overlay?.addEventListener('click', closeModal);
-  btnClose?.addEventListener('click', closeModal);
+  if (overlay) {
+    overlay.addEventListener('click', closeModal);
+  }
+  if (btnClose) {
+    btnClose.addEventListener('click', closeModal);
+  }
 
 
   document.addEventListener('keydown', (e) => {
