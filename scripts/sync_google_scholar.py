@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 import re
+import time
 from datetime import datetime, timezone
 from html import unescape
 from pathlib import Path
 from typing import List
 from urllib.parse import urljoin
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
@@ -37,10 +40,54 @@ DETAIL_FIELD_RE = re.compile(
 YEAR_IN_TEXT_RE = re.compile(r"\b(19|20)\d{2}\b")
 
 
-def fetch_html(url: str) -> str:
-    request = Request(url, headers={"User-Agent": USER_AGENT})
-    with urlopen(request, timeout=30) as response:
-        return response.read().decode("utf-8", "ignore")
+def fetch_html(url: str, retries: int = 4) -> str:
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": SCHOLAR_BASE_URL,
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+    }
+
+    last_error: Exception | None = None
+    for attempt in range(retries):
+        request = Request(url, headers=headers)
+        try:
+            with urlopen(request, timeout=30) as response:
+                return response.read().decode("utf-8", "ignore")
+        except HTTPError as error:
+            last_error = error
+            # Scholar intermittently blocks CI traffic; retry with backoff first.
+            if error.code in (403, 429, 500, 502, 503):
+                sleep_seconds = (2 ** attempt) + random.uniform(0.15, 0.7)
+                time.sleep(sleep_seconds)
+                continue
+            raise
+        except (URLError, TimeoutError) as error:
+            last_error = error
+            sleep_seconds = (2 ** attempt) + random.uniform(0.15, 0.7)
+            time.sleep(sleep_seconds)
+            continue
+
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError("Failed to fetch HTML: unknown network error")
+
+
+def load_cached_payload(output_path: Path) -> dict | None:
+    if not output_path.exists():
+        return None
+    try:
+        payload = json.loads(output_path.read_text())
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(payload, dict):
+        return None
+    publications = payload.get("publications")
+    if not isinstance(publications, list):
+        return None
+    return payload
 
 
 def strip_tags(value: str) -> str:
@@ -221,9 +268,19 @@ def main() -> None:
     parser.add_argument("--pagesize", type=int, default=DEFAULT_PAGESIZE)
     args = parser.parse_args()
 
-    payload = build_payload(args.user_id, args.pagesize)
-
     output_path = Path(args.output)
+    try:
+        payload = build_payload(args.user_id, args.pagesize)
+    except Exception as error:
+        cached_payload = load_cached_payload(output_path)
+        if cached_payload is None:
+            raise
+        payload = cached_payload
+        print(
+            f"Warning: Google Scholar sync failed ({error!r}); "
+            "using cached publication data instead."
+        )
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=True) + "\n")
 

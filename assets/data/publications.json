@@ -2,14 +2,14 @@
   "profile_id": "QHEX6EcAAAAJ",
   "profile_name": "Boyang Cheng",
   "source_url": "https://scholar.google.com/citations?user=QHEX6EcAAAAJ&hl=en",
-  "updated_at": "2026-03-26T19:08:21.816773+00:00",
+  "updated_at": "2026-04-01T20:21:06.646383+00:00",
   "publications": [
     {
       "title": "A 350-pW Implantable Ventricular Arrhythmia Detection Engine With Bayesian Uncertainty Quantification in 65-nm CMOS",
       "authors": "Zephan M Enciso, Jianbo Liu, Boyang Cheng, Likai Pei, Steven Davis, Yifan Qin, Zhenge Jia, Xiaobo Sharon Hu, Yiyu Shi, Michael Niemier, Ningyuan Cao",
       "venue": "IEEE Journal of Solid-State Circuits",
       "year": 2026,
-      "citations": 0,
+      "citations": 1,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=QHEX6EcAAAAJ:_FxGoFyzp5QC"
     },
     {
@@ -17,7 +17,7 @@
       "authors": "Likai Pei, Yu Zhou, Xingtian Wang, Xueji Zhao, Wanxin Huang, Boyang Cheng, Halid Mulaosmanovic, Stefan Duenkel, Dominik Kleimaier, Sven Beyer, Kai Ni, Mengxue Hou, Michael Niemier, Ningyuan Cao",
       "venue": "2025 62nd ACM/IEEE Design Automation Conference (DAC)",
       "year": 2025,
-      "citations": 0,
+      "citations": 1,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=QHEX6EcAAAAJ:ufrVoPGSRksC"
     },
     {
@@ -49,7 +49,7 @@
       "authors": "Likai Pei, Yifan Qin, Zephan M Enciso, Boyang Cheng, Jianbo Liu, Steven Davis, Zhenge Jia, Michael Niemier, Yiyu Shi, Sharon Hu, Ningyuan Cao",
       "venue": "Proceedings of the 43rd IEEE/ACM International Conference on Computer-Aided Design",
       "year": 2024,
-      "citations": 2,
+      "citations": 3,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=QHEX6EcAAAAJ:eQOLeE2rZwMC"
     },
     {
@@ -65,7 +65,7 @@
       "authors": "Boyang Cheng, Jianbo Liu, Steven Davis, Zephan M Enciso, Yiyang Zhang, Ningyuan Cao",
       "venue": "Proceedings of the 61st ACM/IEEE Design Automation Conference",
       "year": 2024,
-      "citations": 1,
+      "citations": 2,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=QHEX6EcAAAAJ:Y0pCki6q_DkC"
     },
     {
@@ -81,7 +81,7 @@
       "authors": "Steven Davis, Jianbo Liu, Boyang Cheng, Muya Chang, Ningyuan Cao",
       "venue": "IEEE transactions on circuits and systems I: Regular Papers",
       "year": 2024,
-      "citations": 5,
+      "citations": 6,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=QHEX6EcAAAAJ:IjCSPb-OGe4C"
     },
     {
