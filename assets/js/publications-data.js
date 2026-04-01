@@ -2,7 +2,7 @@ window.PUBLICATIONS_DATA = {
   "profile_id": "QHEX6EcAAAAJ",
   "profile_name": "Boyang Cheng",
   "source_url": "https://scholar.google.com/citations?user=QHEX6EcAAAAJ&hl=en",
-  "updated_at": "2026-04-01T20:21:06.646383+00:00",
+  "updated_at": "2026-04-01T20:22:19.814509+00:00",
   "publications": [
     {
       "title": "A 350-pW Implantable Ventricular Arrhythmia Detection Engine With Bayesian Uncertainty Quantification in 65-nm CMOS",
