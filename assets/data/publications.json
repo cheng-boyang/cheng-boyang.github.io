@@ -54,7 +54,7 @@
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:0EnyYjriUFMC"
     },
     {
-      "title": "15.3 A 65nm Uncertainty-Quantifiable Ventricular Arrhythmia Detection Engine with  Per Inference",
+      "title": "15.3 A 65nm Uncertainty-Quantifiable Ventricular Arrhythmia Detection Engine with 1.75 µJ per Inference",
       "authors": "Jianbo Liu, Zephan Enciso, Boyang Cheng, Likai Pei, Steven Davis, Yifan Qin, Zhenge Jia, Xiaobo Sharon Hu, Yiyu Shi, Ningyuan Cao",
       "venue": "2025 IEEE International Solid-State Circuits Conference (ISSCC)",
       "year": 2025,
@@ -83,11 +83,12 @@
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:WF5omc3nYNoC"
     },
     {
-      "title": "Towards uncertainty-quantifiable biomedical intelligence: Mixed-signal compute-in-entropy for bayesian neural networks",
+      "title": "Towards Uncertainty-Quantifiable Biomedical Intelligence: Mixed-signal Compute-in-Entropy for Bayesian Neural Networks",
       "authors": "Likai Pei, Yifan Qin, Zephan M Enciso, Boyang Cheng, Jianbo Liu, Steven Davis, Zhenge Jia, Michael Niemier, Yiyu Shi, Sharon Hu, Ningyuan Cao",
       "venue": "Proceedings of the 43rd IEEE/ACM International Conference on Computer-Aided Design",
       "year": 2024,
-      "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:eQOLeE2rZwMC"
+      "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:eQOLeE2rZwMC",
+      "note": "Best Paper Award Nominee"
     },
     {
       "title": "A 65nm Neuromorphic Bio-Signal Encoder with Compute-in-Entropy Architecture 7.13nJ Privacy-Preserving Encoding and 2.38Mb/mm2 Item Memory Density",
@@ -97,21 +98,21 @@
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:Tyk-4Ss8FVUC"
     },
     {
-      "title": "In-situ privacy via mixed-signal perturbation and hardware-secure data reversibility",
+      "title": "In-Situ Privacy via Mixed-Signal Perturbation and Hardware-Secure Data Reversibility",
       "authors": "Steven Davis, Jianbo Liu, Boyang Cheng, Muya Chang, Ningyuan Cao",
       "venue": "IEEE transactions on circuits and systems I: Regular Papers",
       "year": 2024,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:IjCSPb-OGe4C"
     },
     {
-      "title": "Cipuf: Towards on-chip learnable anomaly detection with compute-in-puf architecture",
+      "title": "CIPUF: Towards On-chip Learnable Anomaly Detection with Compute-In-PUF Architecture",
       "authors": "Jianbo Liu, Boyang Cheng, Zephan M Enciso, Steven Davis, Ningyuan Cao",
       "venue": "Proceedings of the 29th ACM/IEEE International Symposium on Low Power Electronics and Design",
       "year": 2024,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:zYLM7Y9cAGgC"
     },
     {
-      "title": "VAE-HDC: Efficient and secure hyper-dimensional encoder leveraging variation analog entropy",
+      "title": "VAE-HDC: Efficient and Secure Hyper-dimensional Encoder Leveraging Variation Analog Entropy",
       "authors": "Boyang Cheng, Jianbo Liu, Steven Davis, Zephan M Enciso, Yiyang Zhang, Ningyuan Cao",
       "venue": "Proceedings of the 61st ACM/IEEE Design Automation Conference",
       "year": 2024,
@@ -125,7 +126,7 @@
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:u5HHmVD_uO8C"
     },
     {
-      "title": "Privacy-by-sensing with time-domain differentially-private compressed sensing",
+      "title": "Privacy-by-Sensing with Time-domain Differentially-Private Compressed Sensing",
       "authors": "Jianbo Liu, Boyang Cheng, Pengyu Zeng, Steven Davis, Muya Chang, Ningyuan Cao",
       "venue": "2023 Design, Automation & Test in Europe Conference & Exhibition (DATE)",
       "year": 2023,
@@ -139,21 +140,21 @@
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:u-x6o8ySG0sC"
     },
     {
-      "title": "A 65 nm wireless image SoC supporting on-chip DNN optimization and real-time computation-communication trade-off via actor-critical neuro-controller",
+      "title": "A 65 nm Wireless Image SoC Supporting On-Chip DNN Optimization and Real-Time Computation-Communication Trade-Off via Actor-Critical Neuro Controller",
       "authors": "Ningyuan Cao, Baibhab Chatterjee, Jianbo Liu, Boyang Cheng, Minxiang Gong, Muya Chang, Shreyas Sen, Arijit Raychowdhury",
       "venue": "IEEE Journal of Solid-State Circuits",
       "year": 2022,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:9yKSN-GCB0IC"
     },
     {
-      "title": "Stochastic mixed-signal circuit design for in-sensor privacy",
+      "title": "Stochastic Mixed-Signal Circuit Design for In-Sensor Privacy",
       "authors": "Ningyuan Cao, Jianbo Liu, Boyang Cheng, Muya Chang",
       "venue": "Proceedings of the 41st IEEE/ACM International Conference on Computer-Aided Design",
       "year": 2022,
       "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:2osOgNQ5qMEC"
     },
     {
-      "title": "A time-domain binary CNN engine with error-detection-based resilience in 28nm CMOS",
+      "title": "A Time-Domain Binary CNN Engine With Error-Detection-Based Resilience in 28nm CMOS",
       "authors": "Zhikuang Cai, Boyang Cheng, Yuxuan Du, Xinchao Shang, Weiwei Shan",
       "venue": "IEEE Transactions on Circuits and Systems II: Express Briefs",
       "year": 2021,

@@ -10,7 +10,8 @@ Author:  Boyang Cheng
 
 Covers the website design and code: the layout, visual design and styling
 (the engraved-book / manuscript-paper theme), and the HTML, CSS and JavaScript
-in index.html.
+in index.html; and the CV tooling in cv/: the resume layout (cv/jobcv.sty),
+cv/sync_publications.py and cv/Makefile.
 
 You are welcome to use this template for your own site. Please keep the
 copyright notice below, and credit "Boyang Cheng" in your site's
@@ -61,7 +62,8 @@ https://creativecommons.org/licenses/by-nc/4.0/
 ===============================================================================
 
 Covers the personal and biographical content: the biography, experience,
-education, research and service text in index.html, the CV in assets/files/,
+education, research and service text in index.html, the CV content
+(cv/Boyang_Cheng_CV.tex, cv/publications.tex and the PDF in assets/files/),
 and the publication record in assets/data/.
 
 Copyright (c) 2026 Boyang Cheng. All rights reserved.

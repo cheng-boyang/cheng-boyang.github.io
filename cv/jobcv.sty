@@ -1,0 +1,75 @@
+% jobcv.sty: a clean, ATS-friendly one-column resume layout for job applications.
+% Copyright (c) 2026 Boyang Cheng. Released under the MIT License (see ../LICENSE).
+% If you reuse this layout, please keep this notice and credit Boyang Cheng.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{jobcv}[2026/11/15 Job-search resume layout]
+
+% ---------- page and type ----------
+\RequirePackage[letterpaper, margin=0.6in, top=0.5in, bottom=0.55in]{geometry}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{XCharter}
+\RequirePackage{microtype}
+\RequirePackage{textcomp}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{titlesec}
+\RequirePackage{tabularx}
+\RequirePackage{needspace}
+\RequirePackage{etoolbox}
+\RequirePackage{fontawesome5}
+\RequirePackage[hidelinks, pdfusetitle]{hyperref}
+
+% make the PDF text extractable (applicant-tracking systems read it)
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\definecolor{ink}{HTML}{221C16}
+\definecolor{accent}{HTML}{8C4A2A}
+\definecolor{muted}{HTML}{6B6157}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\raggedright
+\AtBeginDocument{\color{ink}}
+
+% ---------- header ----------
+\newcommand{\cvname}[1]{{\centering{\fontsize{23}{27}\selectfont\scshape\color{ink} #1}\par\vspace{3pt}}}
+\newcommand{\cvheadline}[1]{{\centering\color{muted}\itshape #1\par\vspace{4pt}}}
+\newcommand{\cvcontacts}[1]{{\centering\small #1\par\vspace{2pt}}}
+\newcommand{\sep}{\hspace{0.45em}{\color{muted}\textbar}\hspace{0.45em}}
+
+% ---------- sections ----------
+\titleformat{\section}{\color{accent}\large\scshape\raggedright}{}{0pt}{}[\vspace{1pt}{\color{accent}\titlerule}]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+% never leave a heading stranded at the bottom of a page
+\pretocmd{\section}{\needspace{5\baselineskip}}{}{}
+
+% ---------- entries ----------
+% \entry{Role or degree}{Dates}{Organisation}{Location}
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & #2 \\
+    \textit{#3} & {\small\itshape #4} \\
+  \end{tabularx}\par}
+
+% bullet points under an entry
+\newenvironment{bullets}
+  {\begin{itemize}[leftmargin=1.1em, itemsep=1pt, topsep=2pt, parsep=0pt, label={\color{muted}\textbullet}]\small}
+  {\end{itemize}\vspace{5pt}}
+
+% a single line with something flushed right: \row{left}{right}
+\newcommand{\row}[2]{\begin{tabularx}{\linewidth}{@{}X r@{}} #1 & #2 \\ \end{tabularx}\par\vspace{1pt}}
+
+% skills: \skill{Label}{items}
+\newcommand{\skill}[2]{{\small\textbf{#1:} #2\par\vspace{2pt}}}
+
+% ---------- publications ----------
+\newcommand{\pubgroup}[1]{\needspace{4\baselineskip}\vspace{3pt}{\small\bfseries\color{muted}#1}\par\vspace{1pt}}
+% \begin{publist}{J} gives labels [J1], [J2], ...
+\newenvironment{publist}[1]
+  {\begin{enumerate}[label={[#1\arabic*]}, leftmargin=2.4em, itemsep=1.5pt, topsep=1pt, parsep=0pt]\small}
+  {\end{enumerate}}
+\newcommand{\me}[1]{\textbf{#1}}
+\endinput

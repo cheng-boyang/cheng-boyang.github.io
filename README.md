@@ -7,8 +7,9 @@ A single static page (`index.html`) styled as an engraved book on manuscript pap
 ## Updating content
 
 - **Text:** edit the chapter sections in `index.html`.
-- **Publications:** the list in the Reference chapter is written into `index.html`. `assets/data/publications.json` keeps the same list as a data record, updated by hand from Google Scholar and arXiv.
+- **Publications:** edit `assets/data/publications.json`, then run `make` in `cv/`. It updates the Reference chapter in `index.html` and the CV together.
 - **Images:** chapter engravings are in `assets/images/chipmonk/`, die photos in `assets/images/chips/`.
+- **CV:** LaTeX source in [`cv/`](cv/). Run `make` there to rebuild the PDF and refresh the publication lists on both the CV and the website.
 
 ## Using this as a template
 

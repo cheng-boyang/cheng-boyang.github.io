@@ -1,0 +1,92 @@
+% Boyang Cheng: CV for job applications.
+% Build: run `make` in this folder. The PDF is copied to assets/files/Boyang_Cheng_s_CV.pdf,
+% which the website links to. Publications come from assets/data/publications.json.
+% Content (c) 2026 Boyang Cheng, all rights reserved. Layout: jobcv.sty (MIT).
+\documentclass[10pt,letterpaper]{article}
+\usepackage{jobcv}
+\hypersetup{pdftitle={Boyang Cheng - CV}, pdfauthor={Boyang Cheng}}
+
+\begin{document}
+
+% ======================================================================
+\cvname{Boyang Cheng}
+\cvheadline{Senior Engineer at Samsung Semiconductor \,\textperiodcentered\, Digital \& Analog/Mixed-Signal IC Design, DTCO, SRAM}
+\cvcontacts{%
+  \href{mailto:chengby1998@gmail.com}{\faEnvelope[regular]\ chengby1998@gmail.com}\sep
+  \faPhone*\ +1 (574) 402-8706\sep
+  \href{https://cheng-boyang.github.io}{\faGlobe\ cheng-boyang.github.io}\sep
+  \href{https://www.linkedin.com/in/boyang-cheng/}{\faLinkedin\ boyang-cheng}\sep
+  \href{https://scholar.google.com/citations?user=QHEX6EcAAAAJ}{\faGraduationCap\ Scholar}\sep
+  \href{https://orcid.org/0000-0003-1003-4960}{\faOrcid\ ORCID}}
+
+% ======================================================================
+\section{Summary}
+{\small IC designer working across digital and analog/mixed-signal circuits, with industry experience in
+design-technology co-optimization (DTCO), standard-cell libraries and SRAM design. Ph.D. research on
+energy-efficient and trustworthy hardware: compute-in-entropy, hardware security with physical unclonable
+functions (PUFs), and uncertainty-aware circuits for biomedical and autonomous systems.\par}
+
+% ======================================================================
+\section{Experience}
+
+\entry{Senior Engineer}{2026 -- Present}{Samsung Semiconductor}{}% TODO: location
+\begin{bullets}
+  \item Design-technology co-optimization (DTCO), standard-cell library and SRAM design.
+\end{bullets}
+
+\entry{Research Scientist Intern, Logic Pathfinding Lab (DTCO)}{May 2025 -- Aug 2025}{Samsung Semiconductor, Inc.}{San Jose, CA, USA}
+\begin{bullets}
+  \item Design-technology co-optimization for advanced standard-cell libraries and SRAM.
+  \item Developed DRC/LVS rule decks and optimized library architectures for diverse applications.
+\end{bullets}
+
+\entry{Research Scientist Intern, Logic Pathfinding Lab (SRAM)}{May 2024 -- Aug 2024}{Samsung Semiconductor, Inc.}{San Jose, CA, USA}
+\begin{bullets}
+  \item Advanced design of SRAM bitcells and peripheral circuits.
+\end{bullets}
+
+\entry{Graduate Research Assistant}{Jan 2022 -- 2026}{University of Notre Dame}{Notre Dame, IN, USA}
+\begin{bullets}
+  \item Energy-efficient, trustworthy mixed-signal hardware in 65\,nm CMOS: compute-in-entropy (CIE)
+        architectures, PUF-based hardware security, and Bayesian / uncertainty-aware inference engines.
+  \item Built a lightweight RV32I RISC-V core for chip testing.
+  \item First-author papers at the VLSI Symposium 2024, DAC 2024 and in IEEE JSSC 2026.
+\end{bullets}
+
+\entry{Research Assistant}{Aug 2020 -- Dec 2021}{Southeast University}{Nanjing, Jiangsu, China}
+\begin{bullets}
+  \item Low-power digital IC design and fault-tolerant computing (advisor: Prof.\ Weiwei Shan).
+\end{bullets}
+
+% ======================================================================
+\section{Education}
+
+\entry{Ph.D., Electrical Engineering}{Jan 2022 -- 2026}{University of Notre Dame}{Notre Dame, IN, USA}
+{\small Advisor: Prof.\ Ningyuan Cao. Dissertation: \textit{Compute-in-Entropy: Energy Efficient Stochastic
+Computing Hardware for Trustworthy Edge Intelligence}.\par}\vspace{5pt}
+
+\entry{B.S., Electronic Science and Technology}{Aug 2016 -- Jun 2020}{Southeast University}{Nanjing, Jiangsu, China}
+
+% ======================================================================
+\section{Skills}
+\skill{IC design}{Analog/mixed-signal IC, digital IC, RISC-V, DTCO, standard-cell libraries, SRAM, floorplanning, custom layout, timing closure}
+\skill{EDA tools}{Cadence Virtuoso (SKILL), Innovus, Synopsys Design Compiler, Siemens Calibre (SVRF), Catapult HLS}
+\skill{Languages}{Verilog, SystemC, C++, Python}
+
+% ======================================================================
+\section{Honors \& Awards}
+\row{\small Best Paper Award Nominee, IEEE/ACM International Conference on Computer-Aided Design (ICCAD)}{\small 2024}
+\row{\small James L. Massey Travel Award, University of Notre Dame}{\small 2023, 2024}
+\row{\small Course Award, Fundamentals of Programming (top 1\%), Southeast University}{}
+\row{\small Course Award, Digital Circuit Design (top 1\%), Southeast University}{}
+
+% ======================================================================
+\section{Publications}
+\input{publications}
+
+% ======================================================================
+\section{Professional Service}
+\skill{Journal reviewer}{IEEE Transactions on Very Large Scale Integration (VLSI) Systems; IEEE Transactions on
+Industrial Electronics; IEEE Sensors Letters; Journal of Systems Architecture; Chaos, Solitons and Fractals}
+
+\end{document}

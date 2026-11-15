@@ -1,0 +1,11 @@
+# LaTeX build output for the CV (the finished PDF is copied to assets/files/)
+cv/build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# macOS
+.DS_Store
