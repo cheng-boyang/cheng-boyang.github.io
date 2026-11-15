@@ -1,4 +1,12 @@
 <!doctype html>
+<!--
+  Engraved-book portfolio template
+  Copyright (c) 2026 Boyang Cheng. https://cheng-boyang.github.io/
+  Template (design, HTML, CSS, JS): MIT License. Keep this notice and credit Boyang Cheng.
+  Images in assets/images/: CC BY-NC 4.0 (credit Boyang Cheng, non-commercial use only).
+  Personal content (bio, CV, publications): all rights reserved; replace it with your own.
+  Full terms: https://github.com/cheng-boyang/cheng-boyang.github.io/blob/main/LICENSE
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -138,19 +146,15 @@
     flex: 1;
     min-height: 0;
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    overscroll-behavior: contain;
+    overscroll-behavior: contain;          /* snapping is done in the script, so it can be slow and gentle */
     outline: none;
   }
   .chapter {
     min-height: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     place-items: center;
-    padding: clamp(22px, 4svh, 56px) var(--gutter) clamp(36px, 6svh, 72px);
+    padding: clamp(22px, 4svh, 56px) var(--gutter) clamp(80px, 16svh, 180px);   /* breathing room before the next chapter */
   }
   /* chapter opening: engraving beside the title, a full-width rule, then the content across the page */
   .spread {
@@ -487,6 +491,16 @@
   .pubs .links { font-style: normal; font-family: var(--display-sc); letter-spacing: .08em; font-size: .9em; margin-left: .5em; }
   .pubs .links a { color: var(--copper); }
   .pubs .v { grid-column: 2 / -1; margin: 0; font-style: italic; font-size: .92em; color: var(--ink-faint); }
+
+  .copyright {
+    margin: 2.6em auto 0 !important;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: .85em;
+    line-height: 1.5;
+    color: var(--ink-faint) !important;
+    text-align: center;
+  }
 
   /* Reference: a closing colophon, centred */
   .chapter.colophon .spread {
@@ -828,17 +842,9 @@
             </div>
           </li>
           <li>
-            <time>Jan 2022 — Jan 2026</time>
-            <div>
-              <h3>M.S., Electrical Engineering</h3>
-              <p class="where">University of Notre Dame · Notre Dame, IN, USA</p>
-              <p>Department of Electrical Engineering · Advisor: Prof. Ningyuan Cao</p>
-            </div>
-          </li>
-          <li>
             <time>Aug 2016 — Jun 2020</time>
             <div>
-              <h3>B.S.</h3>
+              <h3>B.S., Electronic Science and Technology</h3>
               <p class="where">Southeast University · Nanjing, Jiangsu, China</p>
               <p>School of Electronic Science and Engineering</p>
             </div>
@@ -867,7 +873,7 @@
           <li>
             <span class="t"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=QHEX6EcAAAAJ&amp;citation_for_view=QHEX6EcAAAAJ:5nxA0vEk-isC" target="_blank" rel="noopener noreferrer">A 65 nm Privacy-Preserving Neuromorphic Encoder With 7.13 nJ Efficiency, 2.38 Mb/mm2 2T–2T Item Memory Density and Federated Learning Support</a></span>
             <p class="au"><b>Boyang Cheng</b>, Jianbo Liu, Steven Davis, Zephan M Enciso, Likai Pei, Xueji Zhao, Muya Chang, Ningyuan Cao</p>
-            <p class="v">IEEE Journal of Solid-State Circuits, 2026 <span class="links"><a href="https://arxiv.org/abs/2606.09460" target="_blank" rel="noopener noreferrer">arXiv</a></span></p>
+            <p class="v">IEEE Journal of Solid-State Circuits, 2026</p>
           </li>
           <li>
             <span class="t"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=QHEX6EcAAAAJ&amp;citation_for_view=QHEX6EcAAAAJ:hqOjcs7Dif8C" target="_blank" rel="noopener noreferrer">A 65-nm Compute-in-PUF Engine for On-Chip Learnable Anomaly Detection Using 2T–2T PUF Arrays</a></span>
@@ -880,9 +886,9 @@
             <p class="v">arXiv preprint arXiv:2606.07455 (submitted to IEEE Transactions on Circuits and Systems I: Regular Papers), 2026 <span class="links"><a href="https://arxiv.org/abs/2606.07455" target="_blank" rel="noopener noreferrer">arXiv</a></span></p>
           </li>
           <li>
-            <span class="t"><a href="https://arxiv.org/abs/2606.07439" target="_blank" rel="noopener noreferrer">A 65 nm Multi-Modal Bayesian Inference Engine with 16.3 fJ/Sample Calibration-Free GRNG for Risk-Aware At-Home Skin Lesion Screening</a></span>
+            <span class="t"><a href="https://doi.org/10.1109/TCSI.2026.3707736" target="_blank" rel="noopener noreferrer">A 65 nm Multi-Modal Bayesian Inference Engine with 16.3 fJ/Sample Calibration-Free GRNG for Risk-Aware At-Home Skin Lesion Screening</a></span>
             <p class="au">Steven Davis, Likai Pei, Jianbo Liu, Zephan M Enciso, <b>Boyang Cheng</b>, Xueji Zhao, Danny Z Chen, Ningyuan Cao</p>
-            <p class="v">IEEE Transactions on Circuits and Systems I: Regular Papers (accepted), 2026 <span class="links"><a href="https://arxiv.org/abs/2606.07439" target="_blank" rel="noopener noreferrer">arXiv</a> · <a href="https://doi.org/10.1109/TCSI.2026.3707736" target="_blank" rel="noopener noreferrer">DOI</a></span></p>
+            <p class="v">IEEE Transactions on Circuits and Systems I: Regular Papers (accepted), 2026 <span class="links"><a href="https://doi.org/10.1109/TCSI.2026.3707736" target="_blank" rel="noopener noreferrer">DOI</a></span></p>
           </li>
           <li>
             <span class="t"><a href="https://arxiv.org/abs/2604.05115" target="_blank" rel="noopener noreferrer">Probabilistic Tree Inference Enabled by FDSOI Ferroelectric FETs</a></span>
@@ -978,6 +984,7 @@
         <p class="actions centred">
           <a class="btn" href="https://scholar.google.com/citations?user=QHEX6EcAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Open Google Scholar</a>
         </p>
+        <p class="copyright">© 2026 Boyang Cheng.<br>Site template under the <a href="https://github.com/cheng-boyang/cheng-boyang.github.io/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>; illustrations and photographs under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
       </div>
     </div>
   </section>
@@ -1038,21 +1045,69 @@
   }, { passive: true });
   window.addEventListener('resize', update);
 
-  // menu: scroll inside the book rather than jumping the window
-  links.forEach((a, id) => a.addEventListener('click', ev => {
-    ev.preventDefault();
-    document.getElementById(id).scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  }));
-  document.querySelector('.name').addEventListener('click', ev => { ev.preventDefault(); chapters[0].scrollIntoView({ behavior: 'smooth' }); });
+  // ---------- gentle snapping ----------
+  // Native CSS snapping is fast and grabs the page the moment a finger lifts. Instead, wait until
+  // scrolling (including momentum) has fully stopped; if a chapter boundary is then on screen,
+  // glide slowly to whichever chapter fills more of it. Inside a long chapter nothing snaps.
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;   // ease-in-out cubic
+  let anim = null, touching = false, userMoved = false, settleTimer = 0;
 
-  // open at the hashed chapter, and let arrow / page keys work right away
+  function cancelGlide() { if (anim) { cancelAnimationFrame(anim.raf); anim = null; } }
+  function glideTo(y, ms) {
+    cancelGlide();
+    const from = book.scrollTop;
+    const to = Math.max(0, Math.min(book.scrollHeight - book.clientHeight, Math.round(y)));
+    if (Math.abs(to - from) < 2) return;
+    if (reduce.matches || ms <= 0) { book.scrollTop = to; return; }
+    const t0 = performance.now();
+    const g = anim = { raf: 0 };
+    const step = now => {
+      if (anim !== g) return;
+      const t = Math.min(1, (now - t0) / ms);
+      book.scrollTop = from + (to - from) * ease(t);
+      if (t < 1) g.raf = requestAnimationFrame(step); else anim = null;
+    };
+    g.raf = requestAnimationFrame(step);
+  }
+
+  function settle() {
+    if (anim || touching) return;
+    const st = book.scrollTop, vh = book.clientHeight;
+    for (let i = 1; i < chapters.length; i++) {
+      const top = chapters[i].offsetTop;
+      const d = top - st;                                   // where chapter i begins, from the top of the screen
+      if (d > 1 && d < vh - 1) {                            // a boundary is on screen: we are between chapters
+        const prev = chapters[i - 1];
+        const prevRest = Math.max(prev.offsetTop, top - vh);  // the previous chapter with its end at the screen bottom
+        glideTo(d < vh / 2 ? top : prevRest, 750);
+        return;
+      }
+    }
+  }
+  const scheduleSettle = () => { clearTimeout(settleTimer); settleTimer = setTimeout(settle, 160); };
+  const userInput = () => { userMoved = true; cancelGlide(); };
+
+  book.addEventListener('scroll', () => { if (!anim) scheduleSettle(); }, { passive: true });
+  book.addEventListener('touchstart', () => { touching = true; userInput(); }, { passive: true });
+  book.addEventListener('touchend', () => { touching = false; scheduleSettle(); }, { passive: true });
+  book.addEventListener('touchcancel', () => { touching = false; scheduleSettle(); }, { passive: true });
+  book.addEventListener('wheel', userInput, { passive: true });
+  window.addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !e.altKey) userInput(); });
+
+  // menu and name: glide inside the book; trips across several chapters take a little longer
+  function goTo(el) {
+    userMoved = true;
+    const hops = Math.abs(chapters.indexOf(el) - Math.max(0, chapters.findIndex(c => c.id === current)));
+    glideTo(el.offsetTop, Math.min(1500, 700 + 180 * hops));
+  }
+  links.forEach((a, id) => a.addEventListener('click', ev => { ev.preventDefault(); goTo(document.getElementById(id)); }));
+  document.querySelector('.name').addEventListener('click', ev => { ev.preventDefault(); goTo(chapters[0]); });
+
+  // open at the hashed chapter (again after fonts and images settle, unless the reader has already moved)
   const start = document.getElementById(location.hash.slice(1));
   const jumpToStart = () => {
-    if (start && start.classList.contains('chapter')) {
-      book.style.scrollBehavior = 'auto';
-      book.scrollTop = start.offsetTop;
-      requestAnimationFrame(() => { book.style.scrollBehavior = ''; });
-    }
+    if (!userMoved && start && start.classList.contains('chapter')) book.scrollTop = start.offsetTop;
     update();
   };
   // first paint: everything starts off to its side, then eases in
@@ -1063,6 +1118,16 @@
   setTimeout(() => document.documentElement.classList.remove('intro-play'), 1400);
   window.addEventListener('load', jumpToStart, { once: true });
   if (document.fonts) document.fonts.ready.then(jumpToStart);
+  // Web fonts and images can arrive late and reflow the chapters. Until the reader moves, keep the
+  // opening chapter in place; afterwards, settle again if the shift left the page between chapters.
+  if ('ResizeObserver' in window) {
+    let pending = 0;
+    const ro = new ResizeObserver(() => {
+      clearTimeout(pending);
+      pending = setTimeout(() => (userMoved ? scheduleSettle() : jumpToStart()), 60);
+    });
+    chapters.forEach(c => ro.observe(c));
+  }
   book.focus({ preventScroll: true });
 
   // ---------- chip gallery viewer ----------

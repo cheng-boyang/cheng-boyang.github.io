@@ -1,6 +1,24 @@
+This repository contains material under different licenses. Each part below
+says which files it covers.
+
+Website: https://cheng-boyang.github.io/
+Author:  Boyang Cheng
+
+===============================================================================
+1. WEBSITE TEMPLATE: MIT License
+===============================================================================
+
+Covers the website design and code: the layout, visual design and styling
+(the engraved-book / manuscript-paper theme), and the HTML, CSS and JavaScript
+in index.html.
+
+You are welcome to use this template for your own site. Please keep the
+copyright notice below, and credit "Boyang Cheng" in your site's
+acknowledgements, README or footer.
+
 MIT License
 
-Copyright (c) 2022 codewithsadee
+Copyright (c) 2026 Boyang Cheng
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +37,47 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+===============================================================================
+2. IMAGES: Creative Commons Attribution-NonCommercial 4.0 International
+===============================================================================
+
+Covers every image in assets/images/, including the engraved chapter
+illustrations (assets/images/chipmonk/), photographs and chip die photographs.
+
+Copyright (c) 2026 Boyang Cheng
+
+These images are licensed under CC BY-NC 4.0:
+https://creativecommons.org/licenses/by-nc/4.0/
+
+  - You may copy, share and adapt them for non-commercial purposes.
+  - You must give credit to "Boyang Cheng", link to the license, and say
+    if you made changes.
+  - You may not use them for commercial purposes. For commercial use, ask
+    for permission through the contact details on the website.
+
+===============================================================================
+3. PERSONAL CONTENT: All rights reserved
+===============================================================================
+
+Covers the personal and biographical content: the biography, experience,
+education, research and service text in index.html, the CV in assets/files/,
+and the publication record in assets/data/.
+
+Copyright (c) 2026 Boyang Cheng. All rights reserved.
+
+If you use the template, replace this content with your own.
+
+===============================================================================
+4. THIRD-PARTY MATERIAL
+===============================================================================
+
+Material owned by others is not covered by this file and remains under its
+owners' terms. This includes the fonts loaded from Google Fonts (IM Fell
+English, EB Garamond and Caveat, under the SIL Open Font License), any third-
+party names and trademarks, and published papers, which remain subject to
+their publishers' copyright.
+
+Earlier versions of this repository were based on the "vcard-personal-portfolio"
+template by codewithsadee, released under the MIT License. That code has been
+removed; its license applies only to those earlier versions in the Git history.

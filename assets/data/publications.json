@@ -16,8 +16,7 @@
       "authors": "Boyang Cheng, Jianbo Liu, Steven Davis, Zephan M Enciso, Likai Pei, Xueji Zhao, Muya Chang, Ningyuan Cao",
       "venue": "IEEE Journal of Solid-State Circuits",
       "year": 2026,
-      "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:5nxA0vEk-isC",
-      "arxiv": "2606.09460"
+      "scholar_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=QHEX6EcAAAAJ&citation_for_view=QHEX6EcAAAAJ:5nxA0vEk-isC"
     },
     {
       "title": "A 65-nm Compute-in-PUF Engine for On-Chip Learnable Anomaly Detection Using 2T–2T PUF Arrays",
@@ -38,7 +37,6 @@
       "authors": "Steven Davis, Likai Pei, Jianbo Liu, Zephan M Enciso, Boyang Cheng, Xueji Zhao, Danny Z Chen, Ningyuan Cao",
       "venue": "IEEE Transactions on Circuits and Systems I: Regular Papers (accepted)",
       "year": 2026,
-      "arxiv": "2606.07439",
       "doi": "10.1109/TCSI.2026.3707736"
     },
     {
