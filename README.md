@@ -1,10 +1,11 @@
 # Boyang Cheng's Portfolio Website
 
-Personal portfolio website for Boyang Cheng.
+Personal portfolio website for Boyang Cheng: <https://cheng-boyang.github.io/>
 
-Template based on [vcard-personal-portfolio](https://github.com/codewithsadee/vcard-personal-portfolio).
+A single static page (`index.html`) styled as an engraved book on manuscript paper. Each chapter fills one screen and the menu jumps between them.
 
-## Features
+## Updating content
 
-- Weekly automatic sync of publications from Google Scholar (every Monday at 14:00 UTC).
-
+- **Text:** edit the chapter sections in `index.html`.
+- **Publications:** the list in the Reference chapter is written into `index.html`. `assets/data/publications.json` keeps the same list as a data record, updated by hand from Google Scholar and arXiv.
+- **Images:** chapter engravings are in `assets/images/chipmonk/`, die photos in `assets/images/chips/`.
