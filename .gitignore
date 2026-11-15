@@ -1,5 +1,7 @@
 # LaTeX build output for the CV (the finished PDF is copied to assets/files/)
 cv/build/
+# PDFs your editor compiles next to the source (the real one lives in assets/files/)
+cv/*.pdf
 *.aux
 *.fdb_latexmk
 *.fls
