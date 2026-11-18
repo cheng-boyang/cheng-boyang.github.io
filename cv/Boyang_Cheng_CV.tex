@@ -21,17 +21,23 @@
 
 % ======================================================================
 \section{Summary}
-{\small IC designer working across digital and analog/mixed-signal circuits, with industry experience in
-design-technology co-optimization (DTCO), standard-cell libraries and SRAM design. Ph.D. research on
-energy-efficient and trustworthy hardware: compute-in-entropy, hardware security with physical unclonable
-functions (PUFs), and uncertainty-aware circuits for biomedical and autonomous systems.\par}
+{\small Senior Engineer at Samsung Semiconductor, contributing to technology definition for 1\,nm and future nodes and
+owning an agentic-AI workflow that automates standard-cell library generation, verification, characterization,
+PnR integration and benchmark PPA evaluation. Background in DTCO, SRAM, and digital and analog/mixed-signal IC
+design, with 10 silicon-proven tape-outs. Ph.D. research at the University of Notre Dame on energy-efficient,
+trustworthy hardware; 20+ publications spanning the full stack, from devices through IC design to EDA, in IEDM,
+JSSC, ISSCC, VLSI, DAC, and ICCAD (Best Paper nominee).\par}
 
 % ======================================================================
 \section{Experience}
 
 \entry{Senior Engineer}{2026 -- Present}{Samsung Semiconductor}{}% TODO: location
 \begin{bullets}
-  \item Design-technology co-optimization (DTCO), standard-cell library and SRAM design.
+  \item Contribute to technology definition for Samsung's 1\,nm and future process nodes.
+  \item Own a workstream that uses agentic AI to automate the standard-cell library flow: library generation,
+        verification, characterization and integration into the place-and-route (PnR) flow.
+  \item Evaluate final PPA across benchmarks and build a knowledge graph of parameter--performance relationships
+        that guides future standard-cell library development.
 \end{bullets}
 
 \entry{Research Scientist Intern, Logic Pathfinding Lab (DTCO)}{May 2025 -- Aug 2025}{Samsung Semiconductor, Inc.}{San Jose, CA, USA}
@@ -47,10 +53,14 @@ functions (PUFs), and uncertainty-aware circuits for biomedical and autonomous s
 
 \entry{Graduate Research Assistant}{Jan 2022 -- 2026}{University of Notre Dame}{Notre Dame, IN, USA}
 \begin{bullets}
-  \item Energy-efficient, trustworthy mixed-signal hardware in 65\,nm CMOS: compute-in-entropy (CIE)
-        architectures, PUF-based hardware security, and Bayesian / uncertainty-aware inference engines.
-  \item Built a lightweight RV32I RISC-V core for chip testing.
-  \item First-author papers at the VLSI Symposium 2024, DAC 2024 and in IEEE JSSC 2026.
+  \item Proposed \textbf{compute-in-entropy (CIE)}: using built-in device randomness (static entropy) and runtime
+        random behavior (dynamic entropy) to co-design sensing, representation and decision hardware.
+  \item Turned device randomness (random telegraph noise, photonic-sensor thermal noise, latch metastability) into entropy
+        sources inside mixed-signal and digital datapaths in place of separate RNG blocks, co-designed with
+        hyperdimensional computing, probabilistic BNNs and probabilistic decision trees at very low power.
+  \item Made trustworthiness a property of the hardware: privacy-preserving sensing, PUF-based unclonable feature encoding
+        with reduced side-channel exposure, and uncertainty-aware inference whose calibrated confidence matches
+        human-understandable probabilities, while tolerating noise and analog non-idealities.
 \end{bullets}
 
 \entry{Research Assistant}{Aug 2020 -- Dec 2021}{Southeast University}{Nanjing, Jiangsu, China}
@@ -77,16 +87,15 @@ Computing Hardware for Trustworthy Edge Intelligence}.\par}\vspace{5pt}
 \section{Honors \& Awards}
 \row{\small Best Paper Award Nominee, IEEE/ACM International Conference on Computer-Aided Design (ICCAD)}{\small 2024}
 \row{\small James L. Massey Travel Award, University of Notre Dame}{\small 2023, 2024}
-\row{\small Course Award, Fundamentals of Programming (top 1\%), Southeast University}{}
-\row{\small Course Award, Digital Circuit Design (top 1\%), Southeast University}{}
-
-% ======================================================================
-\section{Publications}
-\input{publications}
+\row{\small Course Awards (top 1\%), Fundamentals of Programming and Digital Circuit Design, Southeast University}{}
 
 % ======================================================================
 \section{Professional Service}
 \skill{Journal reviewer}{IEEE Transactions on Very Large Scale Integration (VLSI) Systems; IEEE Transactions on
 Industrial Electronics; IEEE Sensors Letters; Journal of Systems Architecture; Chaos, Solitons and Fractals}
+
+% ======================================================================
+\section{Publications}
+\input{publications}
 
 \end{document}

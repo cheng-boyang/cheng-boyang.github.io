@@ -5,7 +5,7 @@
 \ProvidesPackage{jobcv}[2026/11/15 Job-search resume layout]
 
 % ---------- page and type ----------
-\RequirePackage[letterpaper, margin=0.6in, top=0.5in, bottom=0.55in]{geometry}
+\RequirePackage[letterpaper, margin=0.55in, top=0.45in, bottom=0.5in]{geometry}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{XCharter}
 \RequirePackage{microtype}
@@ -42,7 +42,7 @@
 
 % ---------- sections ----------
 \titleformat{\section}{\color{accent}\large\scshape\raggedright}{}{0pt}{}[\vspace{1pt}{\color{accent}\titlerule}]
-\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\section}{0pt}{7pt}{3pt}
 % never leave a heading stranded at the bottom of a page
 \pretocmd{\section}{\needspace{5\baselineskip}}{}{}
 
@@ -57,7 +57,7 @@
 % bullet points under an entry
 \newenvironment{bullets}
   {\begin{itemize}[leftmargin=1.1em, itemsep=1pt, topsep=2pt, parsep=0pt, label={\color{muted}\textbullet}]\small}
-  {\end{itemize}\vspace{5pt}}
+  {\end{itemize}\vspace{3pt}}
 
 % a single line with something flushed right: \row{left}{right}
 \newcommand{\row}[2]{\begin{tabularx}{\linewidth}{@{}X r@{}} #1 & #2 \\ \end{tabularx}\par\vspace{1pt}}

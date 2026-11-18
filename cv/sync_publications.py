@@ -19,7 +19,7 @@ TEX_OUT = HERE / "publications.tex"
 SITE = ROOT / "index.html"
 
 ME = "Boyang Cheng"
-MAX_AUTHORS = 8          # on the CV, longer lists are cut to "et al." (always keeping ME)
+MAX_AUTHORS = 6          # on the CV, longer lists are cut to "et al." (always keeping ME)
 
 # full venue text (substring, case-insensitive) -> short form for the CV.
 # Order matters: more specific names first ("Systems II" before "Systems I").
@@ -31,7 +31,7 @@ VENUES = [
     ("Microelectronics Journal", "Microelectronics Journal"),
     ("Integration", "Integration, the VLSI Journal"),
     ("International Solid-State Circuits Conference", "ISSCC"),
-    ("VLSI Technology and Circuits", "VLSI Symposium"),
+    ("VLSI Technology and Circuits", "VLSI"),
     ("Design Automation Conference", "DAC"),
     ("Computer-Aided Design", "ICCAD"),
     ("Low Power Electronics and Design", "ISLPED"),
